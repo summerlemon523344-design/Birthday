@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday from Pixels!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fceff9, #d6f7ff);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-top: 80px;
+      animation: bounce 2s infinite;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); }
+    }
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #6C63FF;
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      background: #574bff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎂 Happy Birthday, Kyle! 🎂</h1>
+  <h2>From all of us at APU Frisbee Club (Pixels) 🥏💙</h2>
+
+  <a href="#" class="btn" onclick="playMusic()">🎶 Play Birthday Song 🎶</a>
+
+  <audio id="song" autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid" type="audio/midi">
+    <source src="https://yourhost.com/happy-birthday.mp3" type="audio/mpeg">
+    
+  </audio>
+
+  <script>
+    // Confetti generator
+    for (let i = 0; i < 80; i++) {
+      let confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 70%)`;
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      confetti.style.animationDelay = (Math.random() * 5) + "s";
+    }
+
+    // Play music manually if autoplay is blocked
+    function playMusic() {
+      document.getElementById("song").play();
+    }
+  </script>
+
+</body>
+</html>
